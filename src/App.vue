@@ -2,9 +2,8 @@
   <div>
     <header class="header">
       <div class="hea">
-        <p style="font-size: 40px;">Ingrese nombre o id</p><br>
         <img src="./assets/fuego.jpg" class="logo"><br>
-        <input type="text" v-model="id"><br>
+        <input type="text" v-model="id" placeholder="Ingrese nombre/id"><br>
         <button @click="traer()" class="pokeb"></button>
       </div>
     </header>
@@ -53,13 +52,14 @@
       <div class="circulo-blanco"></div>
       <div class="circulo-rojo"></div>
     
-      
+      <footer style="background-color: aquamarine;"></footer>
   </div>
 </template>
 
 <script setup>
 import { ref,computed } from "vue"
 import axios from "axios"
+import Swal from 'sweetalert2'
 
 
 const filteredTypes = computed(() => {
@@ -73,7 +73,7 @@ let pokemon = ref([])
 
 const tipoFondos = {
   fire: '#E72324',
-  water: '#2481F0',
+  water: '#5f55a8',
   grass: '#3DA224',
   normal: '#A0A2A0',
   fighting: '#FF8100',
@@ -95,7 +95,7 @@ const tipoFondos = {
 
 const tipoColores = {
   fire: '#E72324',
-  water: '#2481F0',
+  water: '#5f55a8',
   grass: '#3DA224',
   normal: '#A0A2A0',
   fighting: '#FF8100',
@@ -118,15 +118,32 @@ let id = ref("")
 
 
 async function traer() {
-  try {
+
+  if(id.value === ""){
+    Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "Por favor digite un nombre o id Pokemon",
+    });
+    }else{
+      try {
     let r = await axios.get("https://pokeapi.co/api/v2/pokemon/" + id.value)
     pokemon.value = r.data
     console.log(r.data);
     console.log(id.value);
+
+    Swal.fire({
+    icon: "success",
+    title: "Pokemon encontrado",
+    showConfirmButton: false,
+    timer: 3500   
+    });
   } catch (error) {
     console.log(error);
   }
+    }
 }
+
 
 
 

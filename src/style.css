@@ -25,8 +25,9 @@
   display: flex;
   justify-content: center;
   height: 600px;
-  margin-top: 1%;
+  margin: 5%;
 }
+
 
 .cont1{
     border: solid  #0d00ff;;
@@ -81,12 +82,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 3%;
 }
 
 .logo{
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
 }
 
 .header input {
@@ -204,10 +204,60 @@
 @media  (max-width: 800px){
   .pdr{
     margin-top: 8% ;
+    font-size: 80%;
+  }
+
+  .logo {
+    height: 100px;
+    width: 100px;
   }
 
   .hea{
     margin-bottom: 10%;
+  }
+
+
+  .linea-superior {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    height: 6px;
+    background-color: black;
+  }
+  
+  .linea-inferior {
+    position: absolute;
+    bottom: 65%;
+    width: 100%;
+    height: 6px;
+    background-color: black;
+  }
+  
+  .circulo-blanco {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: 15px solid black;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .pokeb {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 4px solid #7f8c8d;
+    border-radius: 50%;
+    top: calc(35% - 15px);
+    left: calc(50% - 15px);
+    box-shadow: 0 0 0 0px black;
+    background: #ff0000;
+    z-index: 10;
+    animation: blink 0.5s alternate infinite;
+    cursor: pointer;
   }
 }
 
